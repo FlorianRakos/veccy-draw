@@ -1,0 +1,86 @@
+<component name="libraryTable">
+  <library name="veccy-libs">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/veccy-libs/javafx-swt.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.base.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.controls.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.fxml.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.graphics.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.media.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.swing.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/javafx.web.jar!/" />
+      <root url="jar://$USER_HOME$/veccy-libs/Veccy-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$USER_HOME$/veccy-libs/javadoc" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+      <root url="file://$USER_HOME$/veccy-libs" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.base" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.controls" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.fxml" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.graphics" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.media" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.swing" />
+      <root url="jar://$USER_HOME$/veccy-libs/src.zip!/javafx.web" />
+    </SOURCES>
+  </library>
+</component>
