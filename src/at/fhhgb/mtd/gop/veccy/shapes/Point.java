@@ -3,19 +3,16 @@ package at.fhhgb.mtd.gop.veccy.shapes;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Point implements DrawableShape  {
-    private int x;
-    private int y;
+public class Point extends Shape  {
 
     public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
     }
 
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Color.WHITE);
-        graphicsContext.fillOval(x,y,5,5);
+        super.draw(graphicsContext);
+        graphicsContext.fillOval(this.getX(),this.getY(),5,5);
     }
 }

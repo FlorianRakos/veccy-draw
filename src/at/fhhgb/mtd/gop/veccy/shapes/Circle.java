@@ -1,15 +1,21 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
+import at.fhhgb.mtd.gop.math.Matrix3;
+import at.fhhgb.mtd.gop.math.TransformFactory;
+import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Circle implements DrawableShape {
-    private int x, y;
+public class Circle extends Shape {
+    //private int x, y;
     private int radius;
 
+    final int CIRCLE_POINTS = 256;
+
     public Circle(int x, int y, int radius) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
+        //this.x = x;
+        //this.y = y;
         this.radius = radius;
     }
 
@@ -18,8 +24,8 @@ public class Circle implements DrawableShape {
     }
 
     public Rectangle boundingBox () {
-        int x = this.x - radius;
-        int y = this.y - radius;
+        int x = this.getX() - radius;
+        int y = this.getY() - radius;
         int length = radius * 2;
 
         return new Rectangle(x,y,length,length);
@@ -41,22 +47,48 @@ public class Circle implements DrawableShape {
         if (
             // Overlapping in X
                 ((x1Min < x2Max && x1Max > x2Max)
-                        ||
-                        (x2Min < x1Max && x2Max > x1Max))
-                        &&
-                        // Overlapping in y
-                        ((y1Min < y2Max && y1Max > y2Max)
-                                ||
-                                (y2Min < y1Max && y2Max > y1Max))
+                ||
+                (x2Min < x1Max && x2Max > x1Max))
+                &&
+                // Overlapping in y
+                ((y1Min < y2Max && y1Max > y2Max)
+                ||
+                (y2Min < y1Max && y2Max > y1Max))
         ) {
             return true;
         }
         return false;
     }
 
+    private double[][] getCoordinates() {
+
+        Matrix3 toShape = TransformFactory.createTranslation(getX(),getY());
+        double[][] res = new double[2][CIRCLE_POINTS];
+
+        Vector3[] points = new Vector3[CIRCLE_POINTS];
+        double step = (2 * Math.PI) / CIRCLE_POINTS;
+
+        for (int i = 0; i < CIRCLE_POINTS; i++) {
+            points[i] = new Vector3(new double[]{Math.cos(i * step) * radius, Math.sin(i * step) * radius, 1.0});
+        }
+
+        for (int i = 0; i<CIRCLE_POINTS; i++) {
+            //points[i] = toOrigin.mult(points[i]);
+            if (this.transform == null) this.transform = TransformFactory.defaultMatrix();
+            points[i] = this.transform.mult(points[i]);
+            points[i] = toShape.mult(points[i]);
+            res[0][i] = points[i].getValues()[0];
+            res[1][i] = points[i].getValues()[1];
+        }
+        return res;
+    }
+
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Color.WHITE);
-        graphicsContext.fillOval(this.x,this.y,this.radius,this.radius);
+        super.draw(graphicsContext);
+        //graphicsContext.fillOval(this.x,this.y,this.radius,this.radius);
+        double[][] coords = getCoordinates();
+        graphicsContext.fillPolygon(coords[0], coords[1], CIRCLE_POINTS);
+        graphicsContext.strokePolygon(coords[0], coords[1], CIRCLE_POINTS);
     }
 }

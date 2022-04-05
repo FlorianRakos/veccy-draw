@@ -2,6 +2,7 @@ package at.fhhgb.mtd.gop.veccy;
 
 import at.fhhgb.mtd.gop.data.DoubleLinkedList;
 import at.fhhgb.mtd.gop.math.Matrix3;
+import at.fhhgb.mtd.gop.math.TransformFactory;
 import at.fhhgb.mtd.gop.math.Vector3;
 import at.fhhgb.mtd.gop.veccy.features.CircleFeature;
 import at.fhhgb.mtd.gop.veccy.features.LineFeature;
@@ -34,11 +35,14 @@ public class Veccy extends Application {
         model.addFeature(pF);
         model.addFeature(rF);
 
+//        Rectangle rec = new Rectangle(100, 100, 50, 50);
+//        rec.setTransform(TransformFactory.defaultMatrix());
+//        model.addShape(rec);
+
+        Circle cir = new Circle(100, 100, 100);
+        model.addShape(cir);
 
 
-//            DoubleLinkedList list = new DoubleLinkedList();
-//            list.prepend(1);
-//            list.append(5);
 
     }
 }

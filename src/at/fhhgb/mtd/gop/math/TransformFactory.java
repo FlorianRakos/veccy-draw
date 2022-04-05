@@ -22,4 +22,8 @@ public class TransformFactory {
         return new Matrix3(new double[][]{{factorX,0,0},{0,factorY,0},{0,0,1}});
     }
 
+    public static Matrix3 defaultMatrix () {
+        return new Matrix3 (new double[][]{{1,0,0},{0,1,0},{0,0,1}});
+    }
+
 }
