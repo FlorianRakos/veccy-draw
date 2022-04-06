@@ -21,28 +21,45 @@ public class Veccy extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         VeccyGUI veccyGUI = new VeccyGUI(stage);
         CanvasModel model = veccyGUI.getModel();
 
-        CircleFeature cF = new CircleFeature();
-        LineFeature lF = new LineFeature();
-        PointFeature pF = new PointFeature();
-        RectangleFeature rF = new RectangleFeature();
+        CircleFeature cF = new CircleFeature(model);
+        LineFeature lF = new LineFeature(model);
+        PointFeature pF = new PointFeature(model);
+        RectangleFeature rF = new RectangleFeature(model);
 
         model.addFeature(cF);
         model.addFeature(lF);
         model.addFeature(pF);
         model.addFeature(rF);
 
-//        Rectangle rec = new Rectangle(100, 100, 50, 50);
-//        rec.setTransform(TransformFactory.defaultMatrix());
-//        model.addShape(rec);
 
+        // Temporary Tests
         Circle cir = new Circle(100, 100, 100);
         model.addShape(cir);
 
+        Circle cir2 = new Circle(100, 100, 100);
+        System.out.println("Circle: " + cir.equals(cir2));
 
+        Line lin = new Line(10,10,40,40);
+        Line lin2 = new Line(10,10,40,40);
+        System.out.println("Line: " + lin.equals(lin2));
+
+        Point point = new Point(5, 5);
+        Point point1 = new Point(5, 5);
+        System.out.println("Point: " + point.equals(point1));
+
+        Rectangle rec = new Rectangle(5,5,5,5);
+        Rectangle rec2 = new Rectangle(5,5,5,5);
+        System.out.println("Rectangle: " + rec.equals(rec2));
+
+        // Testing toString
+        System.out.println(cir);
+        System.out.println(lin);
+        System.out.println(point);
+        System.out.println(rec);
 
     }
 }

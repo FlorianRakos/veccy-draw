@@ -1,8 +1,18 @@
 package at.fhhgb.mtd.gop.veccy.features;
 
+import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
+import at.fhhgb.mtd.gop.veccy.shapes.Circle;
+import org.junit.jupiter.api.BeforeAll;
 
 public class CircleFeature implements NamedFeature {
+    private boolean isActive = false;
+    private CanvasModel model;
+
+    public CircleFeature (CanvasModel model) {
+        this.model = model;
+    }
+
     @Override
     public String getName() {
         return "Circle";
@@ -10,17 +20,20 @@ public class CircleFeature implements NamedFeature {
 
     @Override
     public void onSelect() {
-        System.out.println("OnSelect");
+        isActive = true;
     }
 
     @Override
     public void onDeselect() {
-        System.out.println("OnDeselect");
+        isActive = false;
     }
 
     @Override
     public void onMouseClick(int i, int i1) {
-        System.out.println("OnMouseClick");
+        if(!isActive) return;
+
+        Circle cir = new Circle(i, i1, (int)(Math.random() * 100));
+        model.addShape(cir);
     }
 
     @Override

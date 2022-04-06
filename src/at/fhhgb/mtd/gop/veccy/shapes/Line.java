@@ -37,25 +37,42 @@ public class Line extends Shape {
         int y2Min = other.getY();
         int y2Max = other.getY() + other.getHeight();
 
-        if (
-            // Overlapping in X
-            ((x1Min < x2Max && x1Max > x2Max)
-                    ||
-                    (x2Min < x1Max && x2Max > x1Max))
-                    &&
-            // Overlapping in y
-            ((y1Min < y2Max && y1Max > y2Max)
-                    ||
-                    (y2Min < y1Max && y2Max > y1Max))
-        ) {
-            return true;
-        }
-        return false;
+        // Overlapping in X
+        return ((x1Min < x2Max && x1Max > x2Max)
+                ||
+                (x2Min < x1Max && x2Max > x1Max))
+                &&
+                // Overlapping in y
+                ((y1Min < y2Max && y1Max > y2Max)
+                ||
+                (y2Min < y1Max && y2Max > y1Max));
     }
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.strokeLine(x1, y1, x2, y2);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Line other) {
+            return
+                other.x1 == this.x1 &&
+                other.y1 == this.y1 &&
+                other.x2 == this.x2 &&
+                other.y2 == this.y2;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Line between ");
+        sb.append(x1 + "/" + y1);
+        sb.append(" and ");
+        sb.append(x2 + "/" + y2);
+        return sb.toString();
     }
 }

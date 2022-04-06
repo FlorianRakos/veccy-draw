@@ -44,21 +44,15 @@ public class Rectangle extends Shape {
         int y2Min = other.getY();
         int y2Max = other.getY() + other.getHeight();
 
-        if (
                 // Overlapping in X
-            ((x1Min < x2Max && x1Max > x2Max)
-            ||
-            (x2Min < x1Max && x2Max > x1Max))
-            &&
+        return ((x1Min < x2Max && x1Max > x2Max)
+                ||
+                (x2Min < x1Max && x2Max > x1Max))
+                &&
                 // Overlapping in y
-            ((y1Min < y2Max && y1Max > y2Max)
-            ||
-            (y2Min < y1Max && y2Max > y1Max))
-            ) {
-            return true;
-        }
-
-        return false;
+                ((y1Min < y2Max && y1Max > y2Max)
+                ||
+                (y2Min < y1Max && y2Max > y1Max));
     }
 
     private double[][] getCoordinates() {
@@ -74,6 +68,7 @@ public class Rectangle extends Shape {
 
         for (int i = 0; i<4; i++) {
             points[i] = toOrigin.mult(points[i]);
+            if (this.transform == null) this.transform = TransformFactory.defaultMatrix();
             points[i] = this.transform.mult(points[i]);
             points[i] = toShape.mult(points[i]);
             res[0][i] = points[i].getValues()[0];
@@ -98,5 +93,28 @@ public class Rectangle extends Shape {
         double[][] coords = getCoordinates();
         graphicsContext.fillPolygon(coords[0], coords[1], 4);
         graphicsContext.strokePolygon(coords[0], coords[1], 4);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Rectangle other) {
+            return
+                other.getX() == this.getX() &&
+                other.getY() == this.getY() &&
+                other.getHeight() == this.getHeight() &&
+                other.getWidth() == this.getWidth();
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Reactangle @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        sb.append(", Width: " + width + ", Height: " + height);
+        return sb.toString();
     }
 }

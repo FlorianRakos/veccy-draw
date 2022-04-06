@@ -7,6 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Circle extends Shape {
+
+
     //private int x, y;
     private int radius;
 
@@ -14,8 +16,6 @@ public class Circle extends Shape {
 
     public Circle(int x, int y, int radius) {
         super(x,y);
-        //this.x = x;
-        //this.y = y;
         this.radius = radius;
     }
 
@@ -44,20 +44,15 @@ public class Circle extends Shape {
         int y2Min = other.getY();
         int y2Max = other.getY() + other.getHeight();
 
-        if (
-            // Overlapping in X
-                ((x1Min < x2Max && x1Max > x2Max)
+                // Overlapping in X
+        return ((x1Min < x2Max && x1Max > x2Max)
                 ||
                 (x2Min < x1Max && x2Max > x1Max))
                 &&
                 // Overlapping in y
                 ((y1Min < y2Max && y1Max > y2Max)
                 ||
-                (y2Min < y1Max && y2Max > y1Max))
-        ) {
-            return true;
-        }
-        return false;
+                (y2Min < y1Max && y2Max > y1Max));
     }
 
     private double[][] getCoordinates() {
@@ -90,5 +85,27 @@ public class Circle extends Shape {
         double[][] coords = getCoordinates();
         graphicsContext.fillPolygon(coords[0], coords[1], CIRCLE_POINTS);
         graphicsContext.strokePolygon(coords[0], coords[1], CIRCLE_POINTS);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Circle other) {
+            return
+                other.position.getValues()[0] == position.getValues()[0] &&
+                other.position.getValues()[1] == position.getValues()[1] &&
+                other.radius == this.radius;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Circle @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        sb.append(", Radius: " + radius);
+        return sb.toString();
     }
 }

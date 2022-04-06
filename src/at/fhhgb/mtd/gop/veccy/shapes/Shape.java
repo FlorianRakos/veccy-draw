@@ -43,4 +43,24 @@ public class Shape implements DrawableShape{
         graphicsContext.setFill(fillColor);
         graphicsContext.setStroke(strokeColor);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Shape) {
+            Shape other = (Shape) obj;
+            return other.position.getValues()[0] == position.getValues()[0] &&
+                    other.position.getValues()[1] == position.getValues()[1];
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Shape @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        return sb.toString();
+    }
 }
