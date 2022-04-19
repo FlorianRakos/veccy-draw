@@ -1,6 +1,12 @@
 package at.fhhgb.mtd.gop.data;
 
-public class DoubleLinkedList {
+import at.fhhgb.mtd.gop.veccy.shapes.Shape;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+
+public class DoubleLinkedList implements Iterable<Shape> {
 
 
     private Node head, tail;
@@ -15,7 +21,7 @@ public class DoubleLinkedList {
         tail = null;
     }
 
-    public void prepend(int val) {
+    public void prepend(Shape val) {
         Node newNode = new Node();
         newNode.val = val;
 
@@ -31,7 +37,7 @@ public class DoubleLinkedList {
 
     }
 
-    public void append(int val) {
+    public void append(Shape val) {
         Node newNode = new Node();
         newNode.val = val;
 
@@ -45,39 +51,41 @@ public class DoubleLinkedList {
         }
     }
 
-    public int get(int index) {
+    public Shape get(int index) throws IndexOutOfBoundsException{
         Node curNode = head;
         for (int i = 0; i < index; i++) {
             curNode = curNode.next;
         }
-        if (curNode == null) return Integer.MIN_VALUE;
+        if (curNode == null) {
+            throw new IndexOutOfBoundsException();
+        }
         return curNode.val;
     }
 
-    public int removeFirst () {
-        if (head == null) return Integer.MIN_VALUE;
-        int result = head.val;
+    public Shape removeFirst () throws NoSuchElementException {
+        if (head == null) throw new NoSuchElementException();
+        Shape result = head.val;
         head = head.next;
         head.prev = null;
         return result;
     }
 
-    public int peakFirst () {
-        if (head == null) return Integer.MIN_VALUE;
+    public Shape peakFirst () throws NoSuchElementException {
+        if (head == null) throw new NoSuchElementException();
         return head.val;
     }
 
-    public int removeLast () {
-        if (tail == null) return Integer.MIN_VALUE;
-        int result = tail.val;
+    public Shape removeLast () throws NoSuchElementException {
+        if (tail == null) throw new NoSuchElementException();
+        Shape result = tail.val;
         tail = tail.prev;
         tail.next = null;
 
         return result;
     }
 
-    public int peakLast () {
-        if (tail == null) return Integer.MIN_VALUE;
+    public Shape peakLast () throws NoSuchElementException {
+        if (tail == null) throw new NoSuchElementException();
         return tail.val;
     }
 
@@ -95,15 +103,20 @@ public class DoubleLinkedList {
         }
     }
 
-
-
     public int size() {
-    Node node = head;
-    int x = 0;
-    while(node != null) {
-        x += 1;
-        node = node.next;
+        Node node = head;
+        int x = 0;
+        while(node != null) {
+            x += 1;
+            node = node.next;
+        }
+        return x;
     }
-    return x;
+
+    @Override
+    public Iterator<Shape> iterator() {
+        return new DoubleLinkedListIterator(this.head);
     }
+
 }
+
