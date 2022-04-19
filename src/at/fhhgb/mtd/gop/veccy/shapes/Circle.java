@@ -9,6 +9,8 @@ import javafx.scene.paint.Color;
 public class Circle extends Shape {
 
 
+
+
     //private int x, y;
     private int radius;
 
@@ -107,5 +109,10 @@ public class Circle extends Shape {
         sb.append(position.getValues()[1]);
         sb.append(", Radius: " + radius);
         return sb.toString();
+    }
+
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 }

@@ -75,4 +75,9 @@ public class Line extends Shape {
         sb.append(x2 + "/" + y2);
         return sb.toString();
     }
+
+    public void setPoint2(int x, int y) {
+        this.x2 = x;
+        this.y2 = y;
+    }
 }

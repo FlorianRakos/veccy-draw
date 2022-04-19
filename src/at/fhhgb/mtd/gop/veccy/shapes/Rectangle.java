@@ -8,10 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.awt.*;
 
-// Fragen:
-// Vector 3 / Double[]
-// Ursprung
-// Fill Polygon
+
 
 public class Rectangle extends Shape {
 
@@ -77,14 +74,6 @@ public class Rectangle extends Shape {
         return res;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
@@ -116,5 +105,21 @@ public class Rectangle extends Shape {
         sb.append(position.getValues()[1]);
         sb.append(", Width: " + width + ", Height: " + height);
         return sb.toString();
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

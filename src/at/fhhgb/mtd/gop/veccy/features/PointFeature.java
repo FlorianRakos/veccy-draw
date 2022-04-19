@@ -2,11 +2,14 @@ package at.fhhgb.mtd.gop.veccy.features;
 
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
+import at.fhhgb.mtd.gop.veccy.shapes.Circle;
 import at.fhhgb.mtd.gop.veccy.shapes.Point;
 
 public class PointFeature implements NamedFeature {
     private boolean isActive = false;
     private CanvasModel model;
+
+    Point currentPoint;
 
     public PointFeature (CanvasModel model) {
         this.model = model;
@@ -28,15 +31,22 @@ public class PointFeature implements NamedFeature {
         isActive = false;
     }
 
+
     @Override
-    public void onMouseClick(int i, int i1) {
-        if (!isActive) return;
-        Point point = new Point(i, i1);
-        model.addShape(point);
+    public void onMouseClick(int x, int y) {
     }
 
     @Override
-    public void onMouseDrag(int i, int i1) {
+    public void onMouseDrag(int x, int y) {
+        if(!isActive) return;
+
+        currentPoint = new Point(x, y);
+
+        currentPoint.setFillColor(model.getCurrentFillColor());
+        currentPoint.setStrokeColor(model.getCurrentStrokeColor());
+        model.addShape(currentPoint);
+
+        currentPoint = null;
 
     }
 }

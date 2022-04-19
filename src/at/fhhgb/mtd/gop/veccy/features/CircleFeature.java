@@ -9,6 +9,10 @@ public class CircleFeature implements NamedFeature {
     private boolean isActive = false;
     private CanvasModel model;
 
+    private Circle currentCircle;
+    private int originX;
+    private int originY;
+
     public CircleFeature (CanvasModel model) {
         this.model = model;
     }
@@ -29,15 +33,34 @@ public class CircleFeature implements NamedFeature {
     }
 
     @Override
-    public void onMouseClick(int i, int i1) {
+    public void onMouseClick(int x, int y) {
         if(!isActive) return;
 
-        Circle cir = new Circle(i, i1, (int)(Math.random() * 100));
-        model.addShape(cir);
+        currentCircle = null;
+        originY = 0;
+        originX = 0;
     }
 
     @Override
-    public void onMouseDrag(int i, int i1) {
+    public void onMouseDrag(int x, int y) {
+        if(!isActive) return;
 
+        if (originX == 0 && originY == 0) {
+            originX = x;
+            originY = y;
+        }
+
+        int rad = (int) Math.sqrt((originX - x) * (originX - x) + (originY - y) * (originY - y) );
+
+        if (currentCircle == null) {
+            currentCircle = new Circle(originX, originY, rad);
+            System.out.println("new cir");
+        } else {
+            currentCircle.setRadius(rad);
+        }
+
+        currentCircle.setFillColor(model.getCurrentFillColor());
+        currentCircle.setStrokeColor(model.getCurrentStrokeColor());
+        model.addShape(currentCircle);
     }
 }
