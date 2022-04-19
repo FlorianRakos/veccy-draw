@@ -4,11 +4,9 @@ import at.fhhgb.mtd.gop.math.Matrix3;
 import at.fhhgb.mtd.gop.math.TransformFactory;
 import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+
 
 public class Circle extends Shape {
-
-
 
 
     //private int x, y;
@@ -83,7 +81,7 @@ public class Circle extends Shape {
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
-        //graphicsContext.fillOval(this.x,this.y,this.radius,this.radius);
+
         double[][] coords = getCoordinates();
         graphicsContext.fillPolygon(coords[0], coords[1], CIRCLE_POINTS);
         graphicsContext.strokePolygon(coords[0], coords[1], CIRCLE_POINTS);

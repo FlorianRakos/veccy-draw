@@ -1,7 +1,7 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+
 
 public class Line extends Shape {
     private int x1, y1;

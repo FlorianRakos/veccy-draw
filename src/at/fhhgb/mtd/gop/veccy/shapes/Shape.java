@@ -6,9 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 
-// Fragen
-// int oder double?
-// position
 public class Shape implements DrawableShape{
     protected Vector3 position;
     protected Matrix3 transform;
