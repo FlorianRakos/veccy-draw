@@ -6,7 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 
-public class Shape implements DrawableShape{
+public abstract class Shape implements DrawableShape{
+    boolean isSelected = false;
     protected Vector3 position;
     protected Matrix3 transform;
     protected Color fillColor = Color.WHITE;
@@ -16,12 +17,54 @@ public class Shape implements DrawableShape{
         position = new Vector3(new double[] {x,y,1.0});
     }
 
+
     public int getX () {
         return (int) Math.round(position.getValues()[0]);
     }
 
     public int getY () {
         return (int) Math.round(position.getValues()[1]);
+    }
+
+    public void setX (int x) {
+        this.position = new Vector3(new double[]{x, this.position.getValues()[1], 0});
+    }
+
+    public void setY (int y) {
+        this.position = new Vector3(new double[]{this.position.getValues()[0], y, 0});
+    }
+
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected (boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    public abstract double[][] getCoordinates();
+
+    public Rectangle getBoundingBox() {
+        double[][] coords = this.getCoordinates();
+        Rectangle rec;
+
+        double left = coords[0][0];
+        double right = coords[0][0];
+        double top = coords[1][0];
+        double bottom = coords[1][0];
+
+        for (int i = 0; i < coords[0].length; i++) {
+            if (left > coords[0][i]) left = coords[0][i];
+            if (right < coords[0][i]) right = coords[0][i];
+            if (top > coords[1][i]) top = coords[1][i];
+            if (bottom < coords[1][i]) bottom = coords[1][i];
+        }
+
+
+        return new Rectangle(
+                (int)left,(int)top,
+                (int)(right-left),(int)(bottom-top));
     }
 
     public void setFillColor (Color c) { fillColor = c;}
@@ -37,8 +80,14 @@ public class Shape implements DrawableShape{
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
+        if (isSelected) {
+            graphicsContext.setStroke(Color.LAWNGREEN);
+            Rectangle bb = getBoundingBox();
+            graphicsContext.strokeRect(bb.getX(), bb.getY(), bb.getWidth(), bb.getHeight());
+        }
         graphicsContext.setFill(fillColor);
         graphicsContext.setStroke(strokeColor);
+
     }
 
     @Override

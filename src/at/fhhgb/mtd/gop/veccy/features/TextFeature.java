@@ -34,6 +34,7 @@ public class TextFeature implements NamedFeature {
         String textStr = BlockingTextInputDialog.requestTextInput();
 
         if (textStr == null) return;
+
         Text text = new Text (x, y, textStr);
         text.setFillColor(model.getCurrentFillColor());
         text.setStrokeColor(model.getCurrentStrokeColor());

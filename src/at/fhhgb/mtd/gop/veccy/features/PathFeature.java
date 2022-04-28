@@ -46,12 +46,13 @@ public class PathFeature implements NamedFeature {
 
         if (currentPath == null) {
             currentPath = new Path(points);
+            model.addShape(currentPath);
         } else {
             currentPath.setPoints(points);
         }
 
         currentPath.setStrokeColor(model.getCurrentStrokeColor());
-        model.addShape(currentPath);
+
     }
 
     @Override

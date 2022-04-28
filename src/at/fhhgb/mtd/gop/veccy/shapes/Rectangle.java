@@ -24,9 +24,9 @@ public class Rectangle extends Shape {
         return this.height * this.width;
     }
 
-    public Rectangle boundingBox () {
-        return new Rectangle(this.getX(),this.getY(),width,height);
-    }
+//    public Rectangle boundingBox () {
+//        return new Rectangle(this.getX(),this.getY(),width,height);
+//    }
 
     public boolean isOverlapping (Rectangle other) {
         int x1Min = this.getX();
@@ -51,7 +51,7 @@ public class Rectangle extends Shape {
                 (y2Min < y1Max && y2Max > y1Max));
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
         Matrix3 toOrigin = TransformFactory.createTranslation(-getX(),-getY());
         Matrix3 toShape = TransformFactory.createTranslation(getX(),getY());
         double[][] res = new double[2][4];
@@ -75,12 +75,13 @@ public class Rectangle extends Shape {
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        super.draw(graphicsContext);
+
         //graphicsContext.fillRect(this.getX(), this.getY(),this.width,this.height);
         // get Coord
         double[][] coords = getCoordinates();
         graphicsContext.fillPolygon(coords[0], coords[1], 4);
         graphicsContext.strokePolygon(coords[0], coords[1], 4);
+        super.draw(graphicsContext);
     }
 
     @Override

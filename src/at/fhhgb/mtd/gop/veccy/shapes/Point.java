@@ -9,6 +9,11 @@ public class Point extends Shape  {
         super(x,y);
     }
 
+    @Override
+    public double[][] getCoordinates() {
+        return new double[][] {{this.getX()},{this.getY()}};
+    }
+
 
     @Override
     public void draw(GraphicsContext graphicsContext) {

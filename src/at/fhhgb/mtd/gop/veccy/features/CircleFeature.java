@@ -54,13 +54,13 @@ public class CircleFeature implements NamedFeature {
 
         if (currentCircle == null) {
             currentCircle = new Circle(originX, originY, rad);
-            System.out.println("new cir");
+            model.addShape(currentCircle);
         } else {
             currentCircle.setRadius(rad);
         }
 
         currentCircle.setFillColor(model.getCurrentFillColor());
         currentCircle.setStrokeColor(model.getCurrentStrokeColor());
-        model.addShape(currentCircle);
+
     }
 }

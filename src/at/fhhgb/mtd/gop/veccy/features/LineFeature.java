@@ -57,13 +57,13 @@ public class LineFeature implements NamedFeature {
 
         if (currentLine == null) {
             currentLine = new Line(originX, originY, x, y);
-
+            model.addShape(currentLine);
         } else {
             currentLine.setPoint2(x, y);
         }
         currentLine.setFillColor(model.getCurrentFillColor());
         currentLine.setStrokeColor(model.getCurrentStrokeColor());
-        model.addShape(currentLine);
+
     }
 
 

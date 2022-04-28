@@ -19,6 +19,8 @@ public class Veccy extends Application {
 
     @Override
     public void start(Stage stage) {
+        DoubleLinkedList dL = new DoubleLinkedList();
+
         VeccyGUI veccyGUI = new VeccyGUI(stage);
         CanvasModel model = veccyGUI.getModel();
 
@@ -37,6 +39,31 @@ public class Veccy extends Application {
         model.addFeature(polF);
         model.addFeature(paF);
         model.addFeature(tF);
+
+
+        model.setCurrentlySelectedShapeHandler(index -> {
+            System.out.println("Change curr selected. Index = " + index);
+            for (int i =0; i < dL.size(); i++) {
+                dL.get(i).setSelected(false);
+            }
+//            for (Shape shape : dL) {
+//                shape.setSelected(false);
+//            }
+            System.out.println("here");
+            dL.get(index).setSelected(true);
+
+        });
+
+
+        model.setShapeCreationHandler(drawableShape -> {
+            System.out.println("Add shape");
+            dL.append((Shape) drawableShape);
+        });
+
+        model.setShapeDeletionHandler(index -> {
+            model.removeShape(dL.get(index));
+            dL.remove(index);
+        });
 
     }
 }

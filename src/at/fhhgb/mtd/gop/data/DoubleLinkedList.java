@@ -84,6 +84,37 @@ public class DoubleLinkedList implements Iterable<Shape> {
         return result;
     }
 
+    public void remove (int index) throws IndexOutOfBoundsException {
+        Node curNode;
+
+        // select negative indices
+        if (index < 0) {
+            curNode = tail;
+            for (int i = 0; i < -1 * index; i++) {
+                curNode = curNode.prev;
+            }
+        // select positive indices
+        } else {
+            System.out.println("Index: " + index);
+            curNode = head;
+            for (int i = 0; i < index; i++) {
+                curNode = curNode.next;
+            }
+        }
+
+        if (curNode == null) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        // Reference to curNode is lost -> Garbage Collector
+        Node next = curNode.next;
+        Node prev = curNode.prev;
+        if (next != null) next.prev = prev;
+        if (prev != null) prev.next = next;
+
+
+    }
+
     public Shape peakLast () throws NoSuchElementException {
         if (tail == null) throw new NoSuchElementException();
         return tail.val;
@@ -117,6 +148,10 @@ public class DoubleLinkedList implements Iterable<Shape> {
     public Iterator<Shape> iterator() {
         return new DoubleLinkedListIterator(this.head);
     }
+
+//    public void sort (func()) {
+//
+//    }
 
 }
 

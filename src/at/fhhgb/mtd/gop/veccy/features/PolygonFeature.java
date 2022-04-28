@@ -47,13 +47,14 @@ public class PolygonFeature implements NamedFeature {
 
         if (currentPoly == null) {
             currentPoly = new Polygon(points);
+            model.addShape(currentPoly);
         } else {
             currentPoly.setPoints(points);
         }
 
         currentPoly.setFillColor(model.getCurrentFillColor());
         currentPoly.setStrokeColor(model.getCurrentStrokeColor());
-        model.addShape(currentPoly);
+
     }
 
     @Override

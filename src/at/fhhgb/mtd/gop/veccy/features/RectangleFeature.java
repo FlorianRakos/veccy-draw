@@ -59,7 +59,7 @@ public class RectangleFeature implements NamedFeature {
 
         if (currentRect == null) {
             currentRect = new Rectangle(originX, originY, width, height);
-
+            model.addShape(currentRect);
         } else {
             currentRect.setHeight(height);
             currentRect.setWidth(width);
@@ -67,6 +67,6 @@ public class RectangleFeature implements NamedFeature {
 
         currentRect.setFillColor(model.getCurrentFillColor());
         currentRect.setStrokeColor(model.getCurrentStrokeColor());
-        model.addShape(currentRect);
+
     }
 }

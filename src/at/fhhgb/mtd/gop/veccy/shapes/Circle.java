@@ -23,16 +23,16 @@ public class Circle extends Shape {
         return (int) (radius * radius * Math.PI);
     }
 
-    public Rectangle boundingBox () {
-        int x = this.getX() - radius;
-        int y = this.getY() - radius;
-        int length = radius * 2;
-
-        return new Rectangle(x,y,length,length);
-    }
+//    public Rectangle boundingBox () {
+//        int x = this.getX() - radius;
+//        int y = this.getY() - radius;
+//        int length = radius * 2;
+//
+//        return new Rectangle(x,y,length,length);
+//    }
 
     public boolean isOverlapping (Rectangle other) {
-        Rectangle bb = this.boundingBox();
+        Rectangle bb = this.getBoundingBox();
 
         int x1Min = bb.getX();
         int x1Max = bb.getX() + bb.getWidth();
@@ -55,7 +55,7 @@ public class Circle extends Shape {
                 (y2Min < y1Max && y2Max > y1Max));
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
 
         Matrix3 toShape = TransformFactory.createTranslation(getX(),getY());
         double[][] res = new double[2][CIRCLE_POINTS];

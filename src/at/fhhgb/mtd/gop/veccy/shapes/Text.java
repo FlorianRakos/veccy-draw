@@ -11,6 +11,12 @@ public class Text extends Shape{
     }
 
     @Override
+    public double[][] getCoordinates() {
+        return new double[][] {{getX(), getX() + textStr.length() * 6},
+                {getY(), getY() - 12}};
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
 

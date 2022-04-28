@@ -49,6 +49,11 @@ public class Line extends Shape {
     }
 
     @Override
+    public double[][] getCoordinates() {
+        return new double[][]{{this.x1, this.x2}, {this.y1, this.y2}};
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.strokeLine(x1, y1, x2, y2);
