@@ -2,7 +2,7 @@ package at.fhhgb.mtd.gop.veccy.shapes;
 import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Polygon extends Shape {
+public class Polygon extends Shape implements Polymetrical {
 
 
     Vector3[] points;
@@ -49,5 +49,11 @@ public class Polygon extends Shape {
     public void setPoints(Vector3[] points) {
         this.points = points;
         numPoints = numPoints();
+        this.setX ((int)points[0].getValues()[0]);
+        this.setY ((int)points[0].getValues()[1]);
+    }
+
+    public Vector3[] getPoints() {
+        return this.points;
     }
 }

@@ -31,6 +31,9 @@ public class Veccy extends Application {
         PolygonFeature polF = new PolygonFeature(model);
         PathFeature paF = new PathFeature(model);
         TextFeature tF = new TextFeature(model);
+        RotateFeature rotF = new RotateFeature();
+        TransformFeature traF = new TransformFeature(model, dL);
+        TranslateFeature translF = new TranslateFeature(model, dL);
 
         model.addFeature(cF);
         model.addFeature(lF);
@@ -39,6 +42,9 @@ public class Veccy extends Application {
         model.addFeature(polF);
         model.addFeature(paF);
         model.addFeature(tF);
+        model.addFeature(rotF);
+        model.addFeature(traF);
+        model.addFeature(translF);
 
 
         model.setCurrentlySelectedShapeHandler(index -> {

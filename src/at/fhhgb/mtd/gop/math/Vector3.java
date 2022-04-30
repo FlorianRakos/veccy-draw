@@ -16,6 +16,10 @@ public class Vector3 {
         return this.values;
     }
 
+    public void setValues(double[] values) {
+        this.values = values;
+    }
+
 
     // Initialisiert this.values mit dem Parameter values (kopieren Sie die Werte!)
     //public Vector3(double[] values) { ... }
